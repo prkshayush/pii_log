@@ -1,0 +1,21 @@
+2025-11-14 10:00:00 INFO User login: helloap@mail.com
+2025-11-14 10:01:00 INFO SSN: 123-45-6789
+2025-11-14 10:02:00 INFO No PII here
+2025-11-14 10:03:00 INFO Another email: prakashayush@mail.com
+2025-11-14 10:04:00 INFO PAN: ABCDE1234F
+2025-11-14 10:05:00 INFO Aadhaar: 1234 5678 9012
+2025-11-14 10:06:00 INFO VoterID: XYZ1234567
+2025-11-14 10:07:00 INFO User logged out
+2025-11-14 10:08:00 INFO System started
+2025-11-14 10:09:00 INFO Transaction ID: 987654321
+2025-11-14 10:10:00 INFO Debug: value=42
+2025-11-14 10:11:00 INFO Health check passed
+2025-11-14 10:12:00 INFO Backup completed
+2025-11-14 10:13:00 INFO User session expired
+2025-11-14 10:14:00 INFO Cache cleared
+2025-11-14 10:15:00 INFO API call: /getUserDetails
+2025-11-14 10:16:00 INFO Payment processed
+2025-11-14 10:17:00 INFO File uploaded: report.pdf
+2025-11-14 10:18:00 INFO Warning: Disk space low
+2025-11-14 10:19:00 INFO Info: No errors detected
+2025-11-14 10:20:00 INFO Debug: retry=3
