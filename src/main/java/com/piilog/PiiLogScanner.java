@@ -24,15 +24,20 @@ public class PiiLogScanner implements Runnable {
 
     @Override
     public void run() {
+        boolean piiFound = false;
         try {
             List<Pattern> patterns = ConfigLoader.loadPatterns(configFilePath);
-            scanLogFile(logFilePath, patterns);
+            piiFound = scanLogFile(logFilePath, patterns);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
+            System.exit(1);
         }
+        System.out.println("FLAG: " + (piiFound ? 1 : 0));
+        System.exit(piiFound ? 1 : 0);
     }
 
-    private void scanLogFile(String logPath, List<Pattern> patterns) throws IOException {
+    private boolean scanLogFile(String logPath, List<Pattern> patterns) throws IOException {
+        boolean piiDetected = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
             String line;
             int lineNum = 0;
@@ -42,10 +47,12 @@ public class PiiLogScanner implements Runnable {
                     Matcher matcher = pattern.matcher(line);
                     if (matcher.find()) {
                         System.out.printf("PII hit at line %d: %s\n", lineNum, line);
+                        piiDetected = true;
                         break;
                     }
                 }
             }
         }
+        return piiDetected;
     }
 }
