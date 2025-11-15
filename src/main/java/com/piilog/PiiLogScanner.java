@@ -17,6 +17,9 @@ public class PiiLogScanner implements Runnable {
     @Option(names = {"-c", "--config"}, description = "Path to config file (YAML/JSON)", required = true)
     private String configFilePath;
 
+    @Option(names = {"-o", "--output"}, description = "Path to output PII log file", required = false)
+    private String outputFilePath = "pii-detected.log";
+
     public static void main(String[] args) {
         int exitCode = new CommandLine(new PiiLogScanner()).execute(args);
         System.exit(exitCode);
@@ -27,7 +30,7 @@ public class PiiLogScanner implements Runnable {
         boolean piiFound = false;
         try {
             List<Pattern> patterns = ConfigLoader.loadPatterns(configFilePath);
-            piiFound = scanLogFile(logFilePath, patterns);
+            piiFound = scanLogFileAndSavePII(logFilePath, patterns, outputFilePath);
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
             System.exit(1);
@@ -36,9 +39,10 @@ public class PiiLogScanner implements Runnable {
         System.exit(piiFound ? 1 : 0);
     }
 
-    private boolean scanLogFile(String logPath, List<Pattern> patterns) throws IOException {
+    private boolean scanLogFileAndSavePII(String logPath, List<Pattern> patterns, String outputPath) throws IOException {
         boolean piiDetected = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader(logPath))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(logPath));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
             String line;
             int lineNum = 0;
             while ((line = reader.readLine()) != null) {
@@ -46,7 +50,8 @@ public class PiiLogScanner implements Runnable {
                 for (Pattern pattern : patterns) {
                     Matcher matcher = pattern.matcher(line);
                     if (matcher.find()) {
-                        System.out.printf("PII hit at line %d: %s\n", lineNum, line);
+                        writer.write("Line " + lineNum + ": " + line);
+                        writer.newLine();
                         piiDetected = true;
                         break;
                     }
