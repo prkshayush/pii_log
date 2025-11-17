@@ -1,0 +1,24 @@
+# List of sensitive keywords for PII detection
+keywords:
+  - password
+  - passwrd
+  - paswrd
+  - pswd
+  - pwd
+  - decodePassword
+  - decodePasswrd
+  - decodeOldPasswrd
+  - decodeConfPasswrd
+  - decodeNewPasswrd
+  - pass
+  - cred
+  - Cred
+  - Credentials
+  - credential
+  - Credential
+  - account no
+  - account number
+  - acc no
+  - Acc No
+  - Account No
+  # Add more keywords as needed

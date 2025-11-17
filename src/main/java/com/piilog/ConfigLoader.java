@@ -29,4 +29,25 @@ public class ConfigLoader {
         }
         return patterns;
     }
+
+    public static List<String> loadKeywords(String configPath) throws Exception {
+        ObjectMapper mapper;
+        if (configPath.endsWith(".yaml") || configPath.endsWith(".yml")) {
+            mapper = new ObjectMapper(new YAMLFactory());
+        } else if (configPath.endsWith(".json")) {
+            mapper = new ObjectMapper();
+        } else {
+            throw new IllegalArgumentException("Unsupported config file type. Use YAML or JSON.");
+        }
+        JsonNode root = mapper.readTree(new File(configPath));
+        List<String> keywords = new ArrayList<>();
+        if (root.has("keywords")) {
+            for (JsonNode node : root.get("keywords")) {
+                keywords.add(node.asText());
+            }
+        } else {
+            throw new IllegalArgumentException("Config file must contain a 'keywords' array.");
+        }
+        return keywords;
+    }
 }

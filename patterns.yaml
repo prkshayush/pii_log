@@ -1,13 +1,11 @@
 patterns:
-  - "\\b\\d{3}-\\d{2}-\\d{4}\\b" # SSN
   - "[A-Z]{5}[0-9]{4}[A-Z]" # PAN Card (e.g., ABCDE1234F)
   - "\\d{4}\\s\\d{4}\\s\\d{4}" # Aadhaar (e.g., 1234 5678 9012)
   - "[A-Z]{3}[0-9]{7}" # Voter ID (e.g., ABC1234567)
   - "account\\s*no\\s*[:=]?\\s*\\d{9,18}" # Account Number
   - "credit\\s*card\\s*no\\s*[:=]?\\s*\\d{13,19}" # Credit Card Number
-  - "(mobile\\s*no|mob\\s*no|mobileNo|mobNo|phoneNo|phone\\s*no)\\s*[:=]?\\s*(\\+\\d{1,3}[- ]?)?\\d{10}" # Mobile/Phone Number with optional country code and keyword variations
-  - "(?i)(?:^|[\\s\\{\\[\\(\\,])password\\s*[:=]\\s*[^\\s\\,\\}}\\]]+" # Password as field/key (case-insensitive)
-  - "address\\s*[:=]?\\s*.+" # Address
-  - "date\\s*of\\s*birth\\s*[:=]?\\s*\\d{2}/\\d{2}/\\d{4}" # Date of Birth (dd/mm/yyyy)
-  - "email\\s*id\\s*[:=]?\\s*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}" # Email ID
-  - "adhaar|aadhaar|pancard|account\\s*no|credit\\s*card\\s*no|mobile\\s*no|email\\s*id|password|address|date\\s*of\\s*birth" # Sensitive keywords
+  - "(?i)(?:^|[\\s\\{\\[\\(\\,])(password|Password|passwrd|paswrd|Paswrd|pswd|Pswd|pwd)\\s*[:=]\\s*[^\\s\\,\\}}\\]]+" # All password variants as field/key
+  - "(?i)(?:^|[\\s\\{\\[\\(\\,])(decodePassword|decodePasswrd|decodeOldPasswrd|decodeConfPasswrd|decodeNewPasswrd)\\s*[:=]\\s*[^\\s\\,\\}}\\]]+" # All decodePassword variants as field/key
+  - "(?i)(?:^|[\\s\\{\\[\\(\\,])(account\\s*no|account\\s*number|acc\\s*no|Acc\\s*No|Account\\s*No)\\s*[:=]\\s*\\d{9,18}" # Account number variants
+  - "(?i)(?:^|[\\s\\{\\[\\(\\,])(cred|Cred|Credentials|credential|Credential)\\s*[:=]\\s*[^\\s\\,\\}}\\]]+" # Credentials variants as field/key
+  - "adhaar|aadhaar|pancard|account\\s*no|account\\s*number|acc\\s*no|Acc\\s*No|Account\\s*No|credit\\s*card\\s*no|password|Password|passwrd|paswrd|Paswrd|pswd|Pswd|decodePassword|decodePasswrd|decodeOldPasswrd|decodeConfPasswrd|decodeNewPasswrd|pass|cred|Cred|Credentials|credential|Credential" # Focused sensitive keywords

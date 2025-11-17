@@ -1,13 +1,11 @@
-Line 2: 2025-11-14 10:01:00 INFO SSN: 123-45-6789
-Line 5: 2025-11-14 10:04:00 INFO PAN: ABCDE1234F
-Line 6: 2025-11-14 10:05:00 INFO Aadhaar: 1234 5678 9012
-Line 7: 2025-11-14 10:06:00 INFO VoterID: XYZ1234567
 Line 12: 2025-11-14 10:11:00 INFO Health check passed
-Line 23: 2025-11-14 10:21:00 INFO User data: {"email": "jsonuser@mail.com", "pan": "ABCDE1234F", "aadhaar": "1234 5678 9012", "voterId": "XYZ1234567"}
+Line 25: 2025-11-14 10:22:00 INFO Account No: 123456789012
+Line 26: 2025-11-14 10:23:00 INFO Credit Card No: 4111111111111111
 Line 28: 2025-11-14 10:25:00 INFO Password: mySecretPassword123
 Line 35: 2025-11-14 10:31:00 INFO password: myRealPassword
+Line 36: 2025-11-14 10:32:00 INFO changePassword requested
+Line 37: 2025-11-14 10:33:00 INFO one time Password sent
 Line 39: 2025-11-14 10:34:00 INFO User data: {"email": "jsonuser2@mail.com", "password": "jsonSecret123", "pan": "ABCDE1234F"}
-Line 41: 2025-11-14 10:35:00 INFO User data: {"email": "intuser@mail.com", "phoneNo": "+447712345678", "address": "London, UK"}
 Line 43: 2025-11-14 10:36:00 INFO User data: {"userID": "user123", "passwrd": "badSpellingPass1"}
 Line 44: 2025-11-14 10:37:00 INFO User data: {"userID": "user456", "pswrd": "badSpellingPass2"}
 Line 45: 2025-11-14 10:38:00 INFO User data: {"userID": "user789", "pswd": "badSpellingPass3"}
